@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: personal-organizer
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: cd backend && python main.py
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: AI_BACKEND
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
